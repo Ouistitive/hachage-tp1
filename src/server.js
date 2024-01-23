@@ -1,6 +1,6 @@
 
 import {createServer} from "node:http"
-import {create, liste} from "./blockchain.js";
+import {create, integrite, liste} from "./blockchain.js";
 import {NotFoundError} from "./errors.js";
 
 createServer(async (req, res) => {
@@ -19,6 +19,10 @@ createServer(async (req, res) => {
                 case 'POST:/blockchain':
                     results = await create(req, res)
                     console.log("POST")
+                    break
+                case 'GET:/blockchain/integrite':
+                    results = await integrite(req, res)
+                    console.log("GET")
                     break
                 default :
                     res.writeHead(404)
