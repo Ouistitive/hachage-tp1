@@ -23,11 +23,14 @@ const path = './data/blockchain.json'
  * @return {Promise<any>}
  */
 export async function findBlocks() {
-    /*return new Promise((resolve, reject) => {
-        readFile(path, (response, err) => {
+    return new Promise((resolve, reject) => {
+        readFile(path, 'utf8').then((response) => {
+            resolve(response)
+        }).catch((err) => {
+            reject(err)
+        })
+    })
 
-        });
-    });*/
 }
 
 /**
@@ -53,6 +56,6 @@ export async function findLastBlock() {
  * @return {Promise<Block[]>}
  */
 export async function createBlock(contenu) {
-    // A coder
+
 }
 
