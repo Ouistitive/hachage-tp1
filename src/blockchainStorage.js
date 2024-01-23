@@ -39,7 +39,12 @@ export async function findBlocks() {
  * @return {Promise<Block[]>}
  */
 export async function findBlock(partialBlock) {
-    // A coder
+    let blocks = await findBlocks()
+
+    blocks.forEach((block) => {
+        if(block.id === partialBlock.id)
+            return block
+    })
 }
 
 /**
