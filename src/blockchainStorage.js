@@ -1,8 +1,7 @@
 import {readFile, writeFile} from 'node:fs/promises'
-import {getDate, monSecret} from "./divers.js";
-import {NotFoundError} from "./errors.js";
+import {getDate} from "./divers.js";
 import {createHash} from 'node:crypto'
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 /* Chemin de stockage des blocks */
 const path = './data/blockchain.json'
@@ -39,13 +38,11 @@ export async function findBlocks() {
  * @return {Promise<Block[]>}
  */
 export async function findBlock(partialBlock) {
-    let blocks = await findBlocks()
+    let blocks = await findBlocks();
 
-    blocks.forEach((block) => {
-        if(block.id === partialBlock.id)
-            return block
-    })
+    return blocks.find((block) => block.id === partialBlock)
 }
+
 
 /**
  * Trouve le dernier block de la chaine

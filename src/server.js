@@ -13,7 +13,8 @@ createServer(async (req, res) => {
         try {
             switch (endpoint) {
                 case 'GET:/blockchain':
-                    results = await liste(req, res, url)
+                    const id = url.searchParams.get('id');
+                    results = await liste(req, res, url, id)
                     console.log("GET")
                     break
                 case 'POST:/blockchain':
