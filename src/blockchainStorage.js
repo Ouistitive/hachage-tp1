@@ -98,8 +98,6 @@ export async function verifBlocks() {
     let integrite = true
 
     for(let i = 0; i < blocks.length; i++) {
-        console.log(i)
-
         if(i === 0) {
             if(blocks[i].hash != null)
                 integrite = false
